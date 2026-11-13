@@ -1,0 +1,32 @@
+.page-main{min-height:65vh}
+.page-hero{min-height:390px;padding:80px 8%;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;background-position:center;background-size:cover;background-color:#073b32;color:white}
+.page-hero h1{font:600 clamp(42px,6vw,72px)/1.05 "Playfair Display",serif;margin:12px 0;max-width:850px}
+.page-hero>p:not(.eyebrow){max-width:720px;line-height:1.8;font-size:16px}
+.simple-hero{background:linear-gradient(120deg,#073b32,#17614e);min-height:300px}
+.passport-hero{background:linear-gradient(120deg,#073b32,#17614e)}
+.page-content{padding:55px 7%;max-width:1300px;margin:auto}
+.page-content h2{font:600 30px "Playfair Display",serif;margin:0 0 22px}
+.content-panel{background:#fffdf7;border:1px solid #e1d7c2;border-radius:18px;padding:28px;margin-bottom:38px;box-shadow:0 8px 24px #183a3009}
+.content-panel p{line-height:1.8;color:#53645b}
+.info-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.info-card{display:block;padding:23px;background:#fffdf7;border:1px solid #e1d7c2;border-radius:15px;min-height:130px}
+.info-card h3{font:600 21px "Playfair Display",serif;margin:0 0 10px;color:#073b32}
+.info-card p{font-size:13px;line-height:1.7;color:#68736b;margin:0}
+.page-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+.dark-outline{border:1px solid #073b32;color:#073b32}
+.notice{display:block;margin-top:18px;color:#39744b;font-size:13px;line-height:1.7}
+.passport-layout{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center}
+.content-panel label,.trip-form label{display:block;font-size:13px;font-weight:700;margin:16px 0}
+.content-panel input,.trip-form input,.trip-form select{display:block;width:100%;padding:13px;border:1px solid #d9d0bd;border-radius:9px;margin-top:7px;font:inherit;background:white}
+.passport-result{display:flex;align-items:center;justify-content:center;gap:12px}
+.passport-cover{width:190px;height:255px;background:linear-gradient(145deg,#0a4c3d,#032c26);border:2px solid #c49b42;border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#e6c46c;text-align:center;gap:16px;box-shadow:0 15px 30px #001a1640}
+.passport-cover small{font-size:10px;letter-spacing:1px}
+.passport-cover strong{font:600 23px/1.25 "Playfair Display",serif;letter-spacing:2px}
+.passport-emblem{font-size:35px}
+.stamp-panel{background:#f5edda;padding:20px;border-radius:8px;min-height:220px;width:260px}
+.stamp-panel h2{font:600 20px "Playfair Display",serif}
+.passport-stamps{display:flex;gap:8px;flex-wrap:wrap}
+.passport-stamps .stamp{border:2px dashed #426b91;color:#426b91;border-radius:50%;width:82px;height:62px;display:grid;place-items:center;text-align:center;font-size:9px;font-weight:800;padding:5px}
+.passport-stamps span:not(.stamp){font-size:12px;color:#68736b}
+.stamp-choices{display:flex;gap:10px;flex-wrap:wrap}
+.stamp-choices button{padding:12px 15px;border:1px solid #c9b98f;background:#fffdf
