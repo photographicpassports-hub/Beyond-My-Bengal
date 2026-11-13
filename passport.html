@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>My Bengal Travel Passport | Beyond My Bengal</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="pages.css">
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="index.html">
+    <img src="assets/logo.png" alt="Beyond My Bengal logo">
+    <span class="brand-text"><strong>BEYOND MY BENGAL</strong><small>Discover More. Experience Bengal.</small></span>
+  </a>
+  <button class="menu-toggle" id="menuToggle">☰</button>
+  <nav class="main-nav" id="mainNav">
+    <a href="index.html">Home</a>
+    <a href="index.html#destinations">Destinations</a>
+    <a href="details.html?type=planner">Plan Your Trip</a>
+  </nav>
+  <div class="header-actions">
+    <button class="language-toggle" id="languageToggle">বাংলা</button>
+  </div>
+</header>
+
+<main class="page-main">
+  <section class="page-hero passport-hero">
+    <p class="eyebrow">YOUR JOURNEY. YOUR COLLECTION.</p>
+    <h1>My Bengal Travel Passport</h1>
+    <p>Create your personal travel passport and collect destination stamps as you explore West Bengal.</p>
+  </section>
+
+  <section class="page-content passport-layout">
+    <div class="content-panel">
+      <h2>Create Your Passport</h2>
+      <label>Your Full Name
+        <input type="text" id="passportName" placeholder="Enter your name">
+      </label>
+      <label>Your Home Town
+        <input type="text" id="passportTown" placeholder="Enter your town">
+      </label>
+      <button class="small-button" id="createPassport">Create Passport</button>
+      <p class="notice" id="passportMessage"></p>
+    </div>
+
+    <div class="passport-result">
+      <div class="passport-cover">
+        <div class="passport-emblem">✦</div>
+        <small>BEYOND MY BENGAL</small>
+        <strong>TRAVEL<br>PASSPORT</strong>
+        <span>◉</span>
+      </div>
+      <div class="stamp-panel">
+        <h2>My Travel Stamps</h2>
+        <div id="passportStamps" class="passport-stamps">
+          <span>No stamps collected yet.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="page-content">
+    <div class="content-panel">
+      <h2>Collect Your Destination Stamps</h2>
+      <p>Select the destinations you have visited. Your stamps will be saved in this browser.</p>
+      <div class="stamp-choices">
+        <button data-stamp="Darjeeling">Darjeeling +</button>
+        <button data-stamp="Sundarbans">Sundarbans +</button>
+        <button data-stamp="Bishnupur">Bishnupur +</button>
+        <button data-stamp="Digha">Digha +</button>
+      </div>
+      <p class="notice">This is a browser-based demo passport. Your information is stored on this device only.</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-brand"><strong>BEYOND MY BENGAL</strong><p>Discover More. Experience Bengal.</p></div>
+  <div><b>Explore</b><a href="index.html#destinations">Destinations</a></div>
+  <div><b>Your Journey</b><a href="details.html?type=planner">Plan Your Trip</a></div>
+  <div><b>Contact</b><a href="index.html#contact">Contact us</a></div>
+  <div class="copyright">© <span id="year"></span> BEYOND MY BENGAL</div>
+</footer>
+
+<script src="script.js"></script>
+<script>
+(function(){
+  const nameInput=document.getElementById("passportName");
+  const townInput=document.getElementById("passportTown");
+  const message=document.getElementById("passportMessage");
+  const stampsBox=document.getElementById("passportStamps");
+  const saved=JSON.parse(localStorage.getItem("bmb-passport")||"{}");
+  nameInput.value=saved.name||"";
+  townInput.value=saved.town||"";
+  function render(){
+    const data=JSON.parse(localStorage.getItem("bmb-passport")||"{}");
+    stampsBox.innerHTML="";
+    if(!data.stamps||!data.stamps.length){
+      stampsBox.innerHTML="<span>No stamps collected yet.</span>";
+      return;
+    }
+    data.stamps.forEach(stamp=>{
+      const el=document.createElement("span");
+      el.className="stamp";
+      el.textContent=stamp.toUpperCase();
+      stampsBox.appendChild(el);
+    });
+  }
+  document.getElementById("createPassport").addEventListener("click",()=>{
+    const data=JSON.parse(localStorage.getItem("bmb-passport")||"{}");
+    data.name=nameInput.value.trim();
+    data.town=townInput.value.trim();
+    data.stamps=data.stamps||[];
+    localStorage.setItem("bmb-passport",JSON.stringify(data));
+    message.textContent=data.name
+      ? "Passport created for "+data.name+"."
+      : "Please enter your name.";
+    render();
+  });
+  document.querySelectorAll("[data-stamp]").forEach(button=>{
+    button.addEventListener("click",()=>{
+      const data=JSON.parse(localStorage.getItem("bmb-passport")||"{}");
+      data.stamps=data.stamps||[];
+      const stamp=button.dataset.stamp;
+      if(!data.stamps.includes(stamp)) data.stamps.push(stamp);
+      localStorage.setItem("bmb-passport",JSON.stringify(data));
+      render();
+    });
+  });
+  render();
+})();
+</script>
+</body>
+</html>
